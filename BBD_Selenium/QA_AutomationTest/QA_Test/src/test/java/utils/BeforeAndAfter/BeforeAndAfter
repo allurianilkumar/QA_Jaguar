@@ -1,0 +1,27 @@
+This is the before and after
+
+
+
+This is what needs to be put into every Java Class created, this is what launches the browser, firefox is currently selected, chooses the size of the browser and then quits the browser once complete.
+You will need imports for this to work correctly. IntelliJ should automatically give you them. however if it does not. Please se below.
+
+
+//We need this static WebDriver driver as it initializes the driver class for the Java file to use.
+
+
+
+   private static WebDriver driver;
+
+
+    @Before("@ENTER THE TITLE OF THE CLASS AND TAG HERE")
+    public static void setUp() throws Exception {
+        driver = BrowserFactory.getDriver();
+        CommonUtil.setWindowSize(driver, ApplicationConstants.DESKTOP);
+        CommonUtil.setImplicitlyWaitTime(driver, 5);
+
+    }
+
+    @After("@ENTER THE TITLE OF THE CLASS AND TAG HERE")
+    public static void tearDown() throws Exception {
+        CommonUtil.quitBrowser(driver);
+    }
